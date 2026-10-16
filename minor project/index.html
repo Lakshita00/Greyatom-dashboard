@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreyAtom | Delivery Exceptions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-mark">G</div>
+            <div>
+                <h1>GreyAtom Logistics</h1>
+                <p>Operations dashboard</p>
+            </div>
+        </div>
+        <span class="team-label">INTERNAL TOOL</span>
+    </header>
+
+    <main class="container">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">OPERATIONS / DELIVERY</p>
+                <h2>Delivery Exceptions</h2>
+                <p class="subheading">Report and manage delivery issues in one place.</p>
+            </div>
+            <div class="date-label" id="todayDate"></div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <p>Total exceptions</p>
+                <h3 id="totalCount">0</h3>
+            </div>
+            <div class="stat-card open-stat">
+                <p>Open issues</p>
+                <h3 id="openCount">0</h3>
+            </div>
+            <div class="stat-card resolved-stat">
+                <p>Resolved issues</p>
+                <h3 id="resolvedCount">0</h3>
+            </div>
+        </section>
+
+        <section class="panel form-panel">
+            <div class="section-title">
+                <div>
+                    <h3>Report a delivery issue</h3>
+                    <p>Enter the details below to add a new exception.</p>
+                </div>
+            </div>
+
+            <form id="exceptionForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="deliveryId">Delivery ID <span>*</span></label>
+                        <input type="text" id="deliveryId" placeholder="e.g. DEL-1042" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="customerName">Customer name <span>*</span></label>
+                        <input type="text" id="customerName" placeholder="Enter customer name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="issueType">Issue type <span>*</span></label>
+                        <select id="issueType" required>
+                            <option value="">Select an issue</option>
+                            <option>Address Not Found</option>
+                            <option>Customer Not Available</option>
+                            <option>Payment Issue</option>
+                            <option>Package Damaged</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Priority <span>*</span></label>
+                        <div class="priority-options">
+                            <label class="radio-label"><input type="radio" name="priority" value="Low" required> Low</label>
+                            <label class="radio-label"><input type="radio" name="priority" value="Medium"> Medium</label>
+                            <label class="radio-label"><input type="radio" name="priority" value="High"> High</label>
+                        </div>
+                    </div>
+
+                    <div class="field full-width">
+                        <label for="notes">Notes <small>(optional)</small></label>
+                        <textarea id="notes" rows="3" placeholder="Add any useful details about the issue"></textarea>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <p><span>*</span> Required fields</p>
+                    <button class="primary-button" type="submit">+ Add exception</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel dashboard-panel">
+            <div class="table-heading">
+                <div>
+                    <h3>Reported exceptions</h3>
+                    <p>Review, filter, and update delivery issues.</p>
+                </div>
+                <div class="filters">
+                    <div>
+                        <label for="typeFilter">Issue type</label>
+                        <select id="typeFilter">
+                            <option value="All">All types</option>
+                            <option>Address Not Found</option>
+                            <option>Customer Not Available</option>
+                            <option>Payment Issue</option>
+                            <option>Package Damaged</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="statusFilter">Status</label>
+                        <select id="statusFilter">
+                            <option value="All">All statuses</option>
+                            <option value="Open">Open</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Delivery ID</th>
+                            <th>Customer name</th>
+                            <th>Issue type</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="exceptionTable">
+                        <tr id="emptyRow">
+                            <td colspan="6" class="empty-state">
+                                <div class="empty-icon">—</div>
+                                <strong>No exceptions reported yet</strong>
+                                <p>New delivery issues will appear here.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-bottom">
+                <span id="resultCount">Showing 0 exceptions</span>
+                <span>GreyAtom Logistics · Operations</span>
+            </div>
+        </section>
+        <footer>Internal operations tool <span>•</span> Delivery exception management</footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
